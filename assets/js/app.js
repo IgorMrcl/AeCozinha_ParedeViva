@@ -40,7 +40,9 @@ const ARTWORKS = [
   // { id: 405, artist: "Paula Iwata", title: "Musa", price: 4500 },
   { id: 406, artist: "Paula Iwata", title: "O Banho do BemTeVi", price: 400 },
   // { id: 407, artist: "Paula Iwata", title: "Pássaro Negro", price: 3000 },
-  { id: 408, artist: "Paula Iwata", title: "Útero", price: 400 },
+  { id: 408, artist: "Paula Iwata", title: "Útero", price: 400, sold: true },
+  { id: 409, artist: "Paula Iwata", title: "Bananeira", price: 400 },
+  { id: 410, artist: "Paula Iwata", title: "Águas", price: 1000 },
 ];
 
 // ====== Estado (apenas busca) ======
@@ -60,11 +62,18 @@ function render(){
   attachImageHandlers();
 }
 
-function card(a){
-  const priceDisplay = a.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+function card(a) {
+  const priceDisplay = a.sold
+    ? "Vendido"
+    : a.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
   const imgPath = buildImagePath(a.artist, a.title, a.price);
+
+  // classe extra se a obra estiver vendida
+  const soldClass = a.sold ? " sold" : "";
+
   return `
-    <article class="card" aria-label="Obra: ${escapeHtml(a.title)} por ${escapeHtml(a.artist)}">
+    <article class="card${soldClass}" aria-label="Obra: ${escapeHtml(a.title)} por ${escapeHtml(a.artist)}">
       <div class="thumb">
         <img
           src="${imgPath}"
