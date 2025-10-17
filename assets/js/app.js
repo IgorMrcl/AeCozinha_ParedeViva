@@ -277,3 +277,64 @@ showGallery();
     });
   }
 })();
+
+/* ====== Lightbox: abrir em tela cheia ao clicar na imagem ====== */
+(function(){
+  const $lb = document.getElementById('lightbox');
+  const $lbImg = document.getElementById('lightboxImg');
+  const $lbClose = document.getElementById('lightboxClose');
+
+  if (!$lb || !$lbImg) return;
+
+  // abre com src/alt
+  function openLightbox(src, alt){
+    $lbImg.src = src;
+    $lbImg.alt = alt || '';
+    $lb.classList.add('open');
+    document.body.classList.add('lb-open');
+    $lb.setAttribute('aria-hidden','false');
+  }
+
+  // fecha e limpa
+  function closeLightbox(){
+    $lb.classList.remove('open');
+    document.body.classList.remove('lb-open');
+    $lb.setAttribute('aria-hidden','true');
+    // remove src depois de um pequeno atraso para evitar flash
+    setTimeout(()=>{ $lbImg.removeAttribute('src'); }, 120);
+  }
+
+  // clique na imagem do catálogo -> abre
+  // (delegação no container da galeria)
+  const $gallery = document.getElementById('gallery');
+  if ($gallery) {
+    $gallery.addEventListener('click', (e)=>{
+      const img = e.target.closest('.thumb img');
+      if (!img) return;
+      e.preventDefault();
+      openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+    });
+  }
+
+  // clique fora da imagem (overlay) -> fecha
+  $lb.addEventListener('click', (e)=>{
+    // se clicou diretamente no overlay (e não na imagem), fecha
+    if (e.target === $lb) closeLightbox();
+  });
+
+  // botão de fechar (acessibilidade)
+  if ($lbClose) {
+    $lbClose.addEventListener('click', (e)=>{ e.preventDefault(); closeLightbox(); });
+  }
+
+  // tecla ESC fecha
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape' && $lb.classList.contains('open')) {
+      e.preventDefault();
+      closeLightbox();
+    }
+  });
+
+  // se a imagem der erro, fecha a lightbox
+  $lbImg.addEventListener('error', closeLightbox);
+})();
