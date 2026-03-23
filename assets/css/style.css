@@ -379,7 +379,7 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
   
   .input-search { display: none; }
   .wrap { padding: 0 20px; }
-  .grid { gap: 20px; }
+  .grid { gap: 10px; grid-template-columns: repeat(2, 1fr); }
   
   .info-container { padding: 30px; }
   .section-title { font-size: 1.6rem; }
