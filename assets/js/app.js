@@ -9,6 +9,15 @@ const $infoBody = document.getElementById('infoBody');
 const $backToGallery = document.getElementById('backToGallery');
 const $lightbox = document.getElementById('lightbox');
 const $lightboxImg = document.getElementById('lightboxImg');
+const $backToArtistGallery = document.getElementById('backToArtistGallery');
+
+const ARTIST_MAP = {
+  'artista-pipilu': 'Atelie Pipilu',
+  'artista-silvia': 'Silvia Gerson',
+  'artista-milla': 'Milla Orlandi',
+  'artista-paula': 'Paula Iwata'
+};
+let currentArtist = null;
 
 // --- Sincronização de Largura Cabeçalho/Grid ---
 function syncHeaderWidth() {
@@ -88,6 +97,17 @@ async function loadSection(file) {
     $info.classList.remove('hidden');
     $menuPanel.classList.remove('open');
     window.scrollTo(0, 0);
+
+    // Lógica para o botão "Ver obras da artista"
+    currentArtist = null; // Reseta o artista atual
+    const artistName = ARTIST_MAP[file];
+    if (artistName) {
+      currentArtist = artistName;
+      $backToArtistGallery.classList.remove('hidden');
+    } else {
+      $backToArtistGallery.classList.add('hidden');
+    }
+
   } catch (e) { console.error(e); }
 }
 
@@ -105,6 +125,13 @@ $menuPanel.onclick = (e) => {
 };
 
 $backToGallery.onclick = () => renderGallery(ARTWORKS);
+
+$backToArtistGallery.onclick = () => {
+  if (currentArtist) {
+    const artistWorks = ARTWORKS.filter(item => item.artist === currentArtist);
+    renderGallery(artistWorks);
+  }
+};
 
 $gallery.onclick = (e) => {
   const card = e.target.closest('.card');

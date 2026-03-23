@@ -296,6 +296,17 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
   color: white;
 }
 
+.info-footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px; /* This margin was originally on the .back-btn itself */
+}
+
+.info-footer-buttons .back-btn {
+  margin-top: 0; /* Override the default margin */
+}
+
 /* =============================================================
    FOOTER & LIGHTBOX
    ============================================================= */
