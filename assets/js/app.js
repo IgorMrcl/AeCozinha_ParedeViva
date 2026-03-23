@@ -9,6 +9,9 @@ const $infoBody = document.getElementById('infoBody');
 const $backToGallery = document.getElementById('backToGallery');
 const $lightbox = document.getElementById('lightbox');
 const $lightboxImg = document.getElementById('lightboxImg');
+const $lightboxArtist = document.getElementById('lightboxArtist');
+const $lightboxTitle = document.getElementById('lightboxTitle');
+const $lightboxPrice = document.getElementById('lightboxPrice');
 const $backToArtistGallery = document.getElementById('backToArtistGallery');
 
 const ARTIST_MAP = {
@@ -136,15 +139,27 @@ $backToArtistGallery.onclick = () => {
 $gallery.onclick = (e) => {
   const card = e.target.closest('.card');
   if (card) {
-    $lightboxImg.src = card.querySelector('img').src;
-    $lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    const img = card.querySelector('img');
+    const title = img.alt;
+    const artwork = ARTWORKS.find(art => art.title === title);
+
+    if(artwork) {
+      $lightboxImg.src = img.src;
+      $lightboxArtist.textContent = artwork.artist;
+      $lightboxTitle.textContent = artwork.title;
+      $lightboxPrice.textContent = artwork.sold ? 'Vendido' : 'R$ ' + artwork.price.toLocaleString('pt-BR');
+      
+      $lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
   }
 };
 
-$lightbox.onclick = () => {
-  $lightbox.style.display = 'none';
-  document.body.style.overflow = 'auto';
+$lightbox.onclick = (e) => {
+  if (e.target === $lightbox) {
+    $lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
 };
 
 // $q.oninput = (e) => {
