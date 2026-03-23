@@ -44,7 +44,7 @@ if (window.ResizeObserver) {
 // --- Fim da Sincronização ---
 
 const ARTWORKS = [
-  { id: 101, artist: "Atelie Pipilu", title: "Pastel Levemente Cremoso", price: 580 },
+  { id: 101, artist: "Atelie Pipilu", title: "Pastel Levemente Cremoso", price: 580},
   { id: 102, artist: "Atelie Pipilu", title: "3 Unidade sem Glúten", price: 470 },
   { id: 201, artist: "Silvia Gerson", title: "Canoa na Patagônia Chilena", price: 2734 },
   { id: 202, artist: "Silvia Gerson", title: "Cartagena Será", price: 2995 },
@@ -81,7 +81,7 @@ function renderGallery(items) {
       <div class="meta">
         <span class="artist">${item.artist}</span>
         <span class="title">${item.title}</span>
-        <span class="price-badge">${item.sold ? 'Vendido' : 'R$ ' + item.price.toLocaleString('pt-BR')}</span>
+        ${!item.sold ? `<span class="price-badge">R$ ${item.price.toLocaleString('pt-BR')}</span>` : ''}
       </div>
     </article>
   `).join('');
