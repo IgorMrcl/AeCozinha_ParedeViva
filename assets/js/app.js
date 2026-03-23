@@ -156,10 +156,8 @@ $gallery.onclick = (e) => {
 };
 
 $lightbox.onclick = (e) => {
-  if (e.target === $lightbox) {
-    $lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
+  $lightbox.style.display = 'none';
+  document.body.style.overflow = 'auto';
 };
 
 // $q.oninput = (e) => {
