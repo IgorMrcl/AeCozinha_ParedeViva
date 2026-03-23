@@ -1,486 +1,418 @@
-/* =========================
-   Design Tokens
-========================= */
-:root{
-  --color1: #3A4132;
-  --color2: #F1E3B2;
-  --color3: #FCF7E9;
-  --color4: #7A2E2E;
-  --color5: #C75C39;
-  --color6: #A3B83A;
-  --color7: #5E6D72;
-  --color8: #7A2E2E;
-  --color9: #D9B64E;
+/* =============================================================
+   IMPORTAÇÃO DE FONTES: O Equilíbrio entre Técnico e Humano
+   ============================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap');
 
-  --bg: var(--color5);
-  --panel: var(--color1);
-  --panel-2: var(--color7);
-  --text: var(--color3);
-  --muted: var(--color2);
-  --brand: var(--color9);
-  --brand-2: var(--color4);
-  --ok: var(--color6);
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
+:root {
+  /* Paleta Oficial Brandbook ae! Cozinha */
+  --color-folhas: #3A4132;    /* Tradição e Credibilidade [cite: 20] */
+  --color-oliva: #F1E3B2;     /* Contraste Suave [cite: 26] */
+  --color-linho: #FCF7E9;     /* Neutralidade e Acolhimento [cite: 32] */
+  --color-bordo: #7A2E2E;     /* Intensidade e Requinte [cite: 38] */
+  --color-terracota: #C75039;  /* Fogo e Autenticidade [cite: 44] */
+  --color-azulejo: #5E6D72;   /* Memória e Moderno [cite: 56] */
+  --color-dourado: #D9B64E;   /* Sofisticação e Luxo [cite: 68] */
 
-  --radius: 18px;
-  --radius-sm: 12px;
-  --gap: clamp(16px, 2.4vw, 28px);
-  --grid-min: 240px;
-
-  /* altura do footer fixo */
-  --footer-h: 60px;
+  /* Atribuição Semântica */
+  --bg-site: var(--color-linho);
+  --text-main: var(--color-folhas);
+  --text-muted: var(--color-azulejo);
+  --accent: var(--color-bordo);
+  --header-bg: var(--color-folhas);
+  
+  /* Estética de Galeria */
+  --radius-gallery: 2px;
+  --shadow-elegant: 0 15px 45px rgba(58, 65, 50, 0.08);
+  --footer-h: 70px;
+  --header-h: 90px;
 }
 
-/* =========================
-   Reset + Basics
-========================= */
-*{ box-sizing:border-box }
-html,body{ height:100% }
-body{
-  margin:0;
-  background:
-    radial-gradient(1200px 600px at 20% -10%, #1d2340, transparent 60%),
-    radial-gradient(900px 500px at 110% 0%, #2a193a, transparent 50%),
-    var(--bg);
-  color:var(--text);
-  font-family: "SpaceGrotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  font-weight:400;
-  letter-spacing:.2px;
-  line-height:1.5;
+/* =============================================================
+   RESET & TIPOGRAFIA
+   ============================================================= */
+* { 
+  box-sizing: border-box; 
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* espaço para não encobrir o conteúdo pelo footer fixo */
+html, body { 
+  height: 100%; 
+  margin: 0;
+}
+
+body {
+  background-color: var(--bg-site);
+  color: var(--text-main);
+  font-family: 'Space Grotesk', sans-serif; /* A forma estável [cite: 74, 78] */
+  line-height: 1.6;
   padding-bottom: var(--footer-h);
 }
-img{ max-width:100%; display:block }
-a{ color:inherit; text-decoration:none }
 
-/* utilitário para leitores de tela */
-.sr-only{
-  position:absolute !important;
-  width:1px !important; height:1px !important;
-  padding:0 !important; margin:-1px !important;
-  overflow:hidden !important; clip:rect(0,0,0,0) !important;
-  white-space:nowrap !important; border:0 !important;
-}
-
-/* wrap padrão */
-.wrap{ max-width:1200px; margin:0 auto; padding:12px clamp(14px, 3vw, 24px); }
-
-/* =========================
-   Header
-========================= */
-.site-header{
-  position:sticky; top:0; z-index:10;
-  backdrop-filter: saturate(1.2) blur(10px);
-  background: color-mix(in oklab, var(--panel) 75%, transparent);
-  border-bottom: 1px solid color-mix(in oklab, var(--brand) 35%, #000 80%);
-}
-
-/* 3 colunas fixas: [logo] [título] [menu] */
-.header-grid{
-  display:grid;
-  grid-template-columns: auto 1fr auto;
-  align-items:center;
-  gap:12px;
-}
-
-/* Logo (esquerda) */
-.brand{
-  display:flex; align-items:center; gap:12px;
-}
-.brand img{
-  height:100px; width:auto; border-radius:10px;
-}
-
-/* Centro: título (busca oculta por enquanto) */
-.header-center{
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center; text-align:center;
-}
-.brand-title {
-  font-family: "SpaceGrotesk", ui-sans-serif, system-ui;
+h1, h2, h3, .brand-title {
+  font-family: 'Playfair Display', serif; /* A curva leve e humana [cite: 75, 80] */
   font-weight: 700;
-  font-size: clamp(22px, 2.8vw, 32px);
-  letter-spacing: 0.4px;
-  color: #FCF7E9;
   margin: 0;
-  text-transform: uppercase;
-  text-shadow: 0 1px 3px rgba(0,0,0,.25);
-}
-.toolbar{ display:none !important; } /* oculto por hora */
-
-/* Direita: apenas o menu */
-.header-right{
-  display:flex; align-items:center; justify-content:flex-end; gap:10px;
 }
 
-/* =========================
-   Menu sanduíche
-========================= */
-.menu-wrapper{ position: relative; }
-.menu-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:40px; height:40px; border-radius:10px;
-  border:1px solid #283149; background:#1e2636; cursor:pointer;
-}
-.menu-icon{
-  position:relative; width:18px; height:2px; background:#b7c0d1; display:block;
-}
-.menu-icon::before, .menu-icon::after{
-  content:""; position:absolute; left:0; width:18px; height:2px; background:#b7c0d1;
-}
-.menu-icon::before{ top:-6px; }
-.menu-icon::after{ top:6px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: 0.3s; }
 
-.menu-panel{
-  position:absolute; right:0; top:calc(100% + 8px);
-  min-width: 240px;
-  background: color-mix(in oklab, var(--panel) 88%, transparent);
-  border:1px solid #283149; border-radius:12px;
-  box-shadow: var(--shadow);
-  padding:8px; display:none; z-index:20;
-}
-.menu-panel.open{ display:block; }
-.menu-list{ list-style:none; margin:0; padding:4px; }
-.menu-list li{ margin:0; padding:0; }
-.menu-list a{
-  display:block; padding:10px 12px; border-radius:10px;
-  color:var(--text); font-weight:500;
-}
-.menu-list a:hover{ background: var(--panel-2); }
-.menu-heading{
-  padding:8px 12px; font-weight:700; color:var(--muted);
-  cursor:default; user-select:none;
-}
-.menu-divider{ height:1px; background:#283149; margin:6px 8px; }
-
-/* =========================
-   Gallery
-========================= */
-.section{ padding: clamp(18px, 3vw, 28px) clamp(14px, 3vw, 24px) 60px; }
-.grid{
-  display:grid; gap:var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
-  align-items:stretch;
+.wrap { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 30px; 
 }
 
-.card{
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--panel) 92%, #000 8%),
-    color-mix(in oklab, var(--panel-2) 90%, #000 10%)
-  );
-  border:1px solid #22293a;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow:hidden;
-  display:flex; flex-direction:column;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.card:hover{
-  transform: translateY(-4px);
-  border-color: color-mix(in oklab, var(--brand) 40%, #222 60%);
-  box-shadow: 0 16px 40px rgba(0,0,0,.45);
+/* =============================================================
+   HEADER (ESTRUTURA FLEXBOX ANTI-QUEBRA)
+   ============================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--header-bg);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(241, 227, 178, 0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-.thumb{ position:relative; aspect-ratio: 4 / 3; background:#0b0f17; overflow:hidden; }
-.thumb img{ width:100%; height:100%; object-fit:cover; }
-.price-badge{
-  position:absolute; right:12px; top:12px;
-  background: color-mix(in oklab, var(--brand) 35%, #0b0f17 65%);
-  color:#fff; padding:8px 10px; border-radius:12px; font-weight:700; font-size:14px; border:1px solid #2a3a6b;
-  box-shadow: 0 6px 18px rgba(0,0,0,.35);
-}
-
-.meta{ padding: 14px 16px 16px; display:grid; gap:6px }
-.artist{ font-weight:700; font-size: clamp(16px, 2vw, 18px) }
-.title{ color: var(--muted) }
-
-/* =========================
-   Seção de texto (info)
-========================= */
-.hidden{ display:none !important; }
-.info h2{
-  margin: 0 0 8px 0;
-  font-family: "SecularOne","SpaceGrotesk",sans-serif;
-  color: var(--brand);
-  font-size: clamp(20px, 2.2vw, 26px);
-}
-.info p{ color: var(--text); }
-.back-btn{
-  margin-top: 16px; padding: 8px 12px; border-radius: 10px; cursor:pointer;
-  border:1px solid #283149; background:#1e2636; color:#b7c0d1; font-weight:600;
-}
-
-/* =========================
-   Footer fixo
-========================= */
-.site-footer{
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  height: var(--footer-h);
-  display:flex; align-items:center;
-  background: color-mix(in oklab, var(--panel) 80%, transparent);
-  border-top: 1px solid color-mix(in oklab, var(--brand) 35%, #000 80%);
-  backdrop-filter: saturate(1.1) blur(8px);
-  z-index: 9;
-}
-.footer-note{
-  margin:0; text-align:center; color:#9aa4b6; font-size:13px;
-}
-
-/* =========================
-   Responsivo
-========================= */
-@media (max-width: 720px){
-  /* mantém 3 colunas: logo | título | menu */
-  .header-grid{
-    grid-template-columns: auto 1fr auto;
-    gap:8px;
-  }
-  /* logo e título redimensionam para caber em linha única */
-  .brand img{
-    height: clamp(38px, 10vw, 60px);
-  }
-  .brand-title{
-    font-size: clamp(16px, 4.2vw, 22px);
-    max-width: 60vw; /* evita empurrar o menu pra linha de baixo */
-  }
-
-  /* menu compacto */
-  .menu-btn{ width:38px; height:38px; }
-  .menu-panel{ min-width: 75vw; }
-}
-
-/* ====== Estilos para parciais (textos de seções) ====== */
-
-/* Layout e tipografia base */
-.info h2,
-.info h3 {
-  font-family: "SecularOne", "SpaceGrotesk", sans-serif;
-  color: var(--brand);
-  letter-spacing: 0.3px;
-}
-
-.info h2 {
-  font-size: clamp(22px, 2.4vw, 30px);
-  margin-bottom: 14px;
-}
-
-.info h3 {
-  font-size: clamp(18px, 2vw, 24px);
-  margin-top: 22px;
-  margin-bottom: 8px;
-  color: var(--muted);
-}
-
-/* Parágrafos e listas */
-.info p {
-  margin: 0 0 14px 0;
-  line-height: 1.65;
-  color: var(--text);
-}
-
-.info ul {
-  margin: 12px 0 18px 20px;
-  padding: 0;
-  list-style: disc;
-}
-
-.info li {
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-/* Parágrafos de destaque (lead) */
-.info .lead {
-  font-size: 1.1em;
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 20px;
-}
-
-/* Citações curtas */
-.info .quote {
-  font-style: italic;
-  color: var(--muted);
-  border-left: 3px solid var(--brand);
-  padding-left: 12px;
-  margin: 16px 0;
-}
-
-/* Linha decorativa separadora */
-.info .rule {
-  height: 1px;
-  background: color-mix(in oklab, var(--brand) 40%, #000 70%);
-  margin: 24px 0;
-  border: none;
-}
-
-/* Links */
-.info a {
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
-.info a:hover {
-  color: var(--brand-2);
-}
-
-/* ====== Assinaturas curatoriais ====== */
-.signature {
-  margin-top: 28px;
-  text-align: right;
-  font-family: "SpaceGrotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  font-weight: 400;
-  color: var(--muted);
-  line-height: 1.4;
-  position: relative;
-}
-
-.signature strong {
-  display: block;
-  font-family: "SecularOne", "SpaceGrotesk", sans-serif;
-  color: var(--brand);
-  font-size: 1.05em;
-}
-
-.signature em {
-  font-style: normal;
-  font-family: "SpaceGrotesk", sans-serif;
-  font-weight: 300;
-  color: color-mix(in oklab, var(--brand) 70%, #fff 30%);
-}
-
-/* efeito sutil de brilho ao passar o mouse (opcional, elegante e discreto) */
-.signature:hover em {
-  color: var(--brand);
-  text-shadow: 0 0 6px color-mix(in oklab, var(--brand) 80%, transparent);
-  transition: all 0.25s ease;
-}
-
-/* ===== FIX HEADER + TÍTULO (clean, sem gradiente) ===== */
-
-/* Garante 3 colunas na mesma linha */
-.site-header .header-grid{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+.header-content {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  width: 100%;
+  gap: 20px;
 }
 
-/* Centro apenas centraliza seu conteúdo */
-.site-header .header-center{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* Logo */
+.brand img {
+  height: 60px;
+  width: auto;
+  border-radius: 4px;
+}
+
+/* Centro: Títulos */
+.header-center {
+  flex: 1;
   text-align: center;
 }
 
-/* Título sóbrio e impactante, sem “efeitos” */
-.site-header .brand-title{
-  font-family: "SecularOne","SpaceGrotesk",sans-serif;
-  font-weight: 700;
-  font-size: clamp(22px, 2.8vw, 32px);
-  letter-spacing: .6px;
-  text-transform: uppercase;
-  color: #FCF7E9; /* sua cor pedida */
-  margin: 0;
-
-  /* mantém numa linha e evita empurrar o menu */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: min(60vw, 720px);
-
-  /* sombra leve para destaque sem “brilho” */
-  text-shadow: 0 1px 3px rgba(0,0,0,.25);
+.brand-title {
+  color: var(--color-oliva);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
 }
 
-/* Linha discreta opcional sob o título (bem sutil) */
-.site-header .brand-title::after{
-  content:"";
-  display:block;
-  width: 48px;
+.brand-subtitle {
+  color: var(--color-dourado);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-top: 2px;
+}
+
+/* Direita: Busca e Menu */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-search {
+  background: rgba(252, 247, 233, 0.08);
+  border: 1px solid rgba(241, 227, 178, 0.3);
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: var(--color-linho);
+  font-family: 'Space Grotesk', sans-serif;
+  width: 180px;
+  outline: none;
+}
+
+.input-search:focus {
+  border-color: var(--color-dourado);
+  background: rgba(252, 247, 233, 0.15);
+}
+
+.menu-btn {
+  background: transparent;
+  border: 1.5px solid var(--color-oliva);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.menu-icon, .menu-icon::before, .menu-icon::after {
+  content: "";
+  display: block;
+  background: var(--color-oliva);
   height: 2px;
-  margin: 6px auto 0;
-  background: color-mix(in oklab, var(--brand) 70%, #000 30%);
-  border-radius: 2px;
-  opacity: .6;
+  width: 18px;
+  position: absolute;
 }
 
-/* Ajustes do logo e do menu para caberem juntos */
-.site-header .brand img{
-  height: clamp(46px, 8vw, 76px);
-  width: auto;
-}
-.site-header .menu-btn{
-  width: 40px; height: 40px;
+.menu-icon::before { top: -6px; }
+.menu-icon::after { top: 6px; }
+
+/* =============================================================
+   GALERIA DE OBRAS (AS-IS NARRATIVA)
+   ============================================================= */
+.main-content {
+  padding: 60px 0;
 }
 
-/* Mobile: mantém 3 colunas e reduz tipografia para não quebrar */
-@media (max-width: 720px){
-  .site-header .header-grid{
-    grid-template-columns: auto 1fr auto;
-    gap: 8px;
-  }
-  .site-header .brand-title{
-    font-size: clamp(16px, 4.6vw, 22px);
-    max-width: 58vw;
-  }
-  .site-header .brand-title::after{
-    width: 40px; height: 2px; margin-top: 4px; opacity: .5;
-  }
-  .site-header .brand img{
-    height: clamp(38px, 9vw, 60px);
-  }
-  .site-header .menu-btn{
-    width: 38px; height: 38px;
-  }
+.grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-/* ====== Obras vendidas ====== */
-.card.sold .thumb img {
-  opacity: 0.15;
-  filter: grayscale(20%);
-  transition: opacity 0.3s ease, filter 0.3s ease;
+.card {
+  background: #FFF;
+  padding: 12px;
+  border: 1px solid rgba(58, 65, 50, 0.05);
+  box-shadow: var(--shadow-elegant);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.card.sold .price-badge {
-  background: #777;
-  color: #f5f5f5;
-  border-color: #666;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(58, 65, 50, 0.12);
+}
+
+.thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: var(--color-linho);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.card:hover .thumb img {
+  transform: scale(1.04);
+}
+
+.meta {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.artist {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--color-folhas);
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 0.85rem;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.5px;
 }
 
-/* ====== Lightbox (imagem em tela cheia) ====== */
+.price-badge {
+  display: block;
+  margin-top: 15px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--color-oliva);
+  padding-top: 10px;
+}
+
+/* =============================================================
+   SEÇÕES DE INFORMAÇÃO (SOBRE)
+   ============================================================= */
+.hidden { display: none !important; }
+
+.info-section {
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-container {
+  background: white;
+  padding: 50px;
+  box-shadow: var(--shadow-elegant);
+}
+
+.section-title {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  border-left: 4px solid var(--color-terracota);
+  padding-left: 20px;
+}
+
+.section-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.section-content strong {
+  color: var(--color-bordo);
+}
+
+.back-btn {
+  margin-top: 30px;
+  background: var(--color-folhas);
+  color: var(--color-oliva);
+  border: none;
+  padding: 12px 25px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: var(--color-terracota);
+  color: white;
+}
+
+/* =============================================================
+   FOOTER & LIGHTBOX
+   ============================================================= */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: var(--footer-h);
+  background: var(--color-folhas);
+  color: var(--color-oliva);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(10, 12, 16, .86);
-  backdrop-filter: blur(2px);
+  background: rgba(58, 65, 50, 0.95);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  cursor: zoom-out;
+  z-index: 200;
+  padding: 20px;
 }
-.lightbox.open { display: flex; }
 
 .lightbox img {
-  max-width: 95vw;
-  max-height: 88vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  box-shadow: 0 20px 60px rgba(0,0,0,.6);
-  border-radius: 12px;
-  cursor: default; /* evita mostrar zoom-out em cima da imagem */
+  max-height: 85vh;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
-/* bloqueia scroll do fundo quando a lightbox está aberta */
-body.lb-open { overflow: hidden; }
+/* =============================================================
+   RESPONSIVIDADE
+   ============================================================= */
+@media (max-width: 768px) {
+  :root { --header-h: 70px; }
+  
+  .header-content { gap: 10px; }
+  .brand img { height: 45px; }
+  .brand-title { font-size: 1.1rem; }
+  .brand-subtitle { font-size: 0.6rem; letter-spacing: 1px; }
+  
+  .input-search { display: none; }
+  .wrap { padding: 0 20px; }
+  .grid { gap: 20px; }
+  
+  .info-container { padding: 30px; }
+  .section-title { font-size: 1.6rem; }
+}
+
+/* --- Painel de Menu Lateral --- */
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Escondido fora da tela */
+  width: 320px;
+  height: 100%;
+  background: var(--color-folhas); /*  */
+  z-index: 1000;
+  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+}
+
+.menu-panel.open {
+  right: 0; /* Desliza para dentro da tela */
+}
+
+/* Overlay para escurecer o fundo quando o menu abre */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  display: none;
+}
+
+.menu-panel.open + .menu-overlay {
+  display: block;
+}
+
+/* Itens do Menu */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.menu-list li { margin-bottom: 25px; }
+
+.menu-list a {
+  color: var(--color-oliva); /*  */
+  font-family: 'Space Grotesk', sans-serif; /* [cite: 74] */
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.menu-list a:hover { color: var(--color-dourado); } /* [cite: 68] */
+
+.menu-divider {
+  color: var(--color-dourado); /* [cite: 68] */
+  font-family: 'Playfair Display', serif; /* [cite: 75] */
+  font-size: 0.9rem;
+  margin: 40px 0 20px 0;
+  border-bottom: 1px solid rgba(217, 182, 78, 0.2);
+  padding-bottom: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--color-oliva);
+  font-size: 2.5rem;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+}

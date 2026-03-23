@@ -3,85 +3,69 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Parede Viva 2025</title>
-  <meta name="description" content="Catálogo estático de obras de arte com imagens, artista, título e valor." />
+  <title>ae! Cozinha | Parede Viva</title>
+  <meta name="description" content="Exposição Parede Viva no restaurante ae! Cozinha. Arte e alta gastronomia em harmonia." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- ====== HEADER ====== -->
+
   <header class="site-header">
     <div class="wrap">
-      <div class="header-grid">
-        <!-- Esquerda: LOGO -->
-        <a class="brand" href="#" aria-label="Página inicial">
-          <img src="assets/img/ae-begesuave-v.png" alt="Logo da organização" />
+      <div class="header-content">
+        <a class="brand" href="index.html" aria-label="Página inicial">
+          <img src="assets/img/ae-begesuave-v.png" alt="ae! Cozinha Logo" />
         </a>
-
-        <!-- Centro: TÍTULO (busca ficará oculta via CSS neste momento) -->
         <div class="header-center">
-          <span class="brand-title">Parede Viva 2025</span>
-          <div class="toolbar" role="region" aria-label="Ferramentas do catálogo">
-            <div class="controls">
-              <input id="q" class="input" type="search" placeholder="Buscar por artista ou obra…" aria-label="Buscar" />
-              <!-- select de ordenação removido -->
-            </div>
-          </div>
+          <h1 class="brand-title">Parede Viva</h1>
+          <p class="brand-subtitle">Ciclo de Exposições 2025</p>
         </div>
-
-        <!-- Direita: MENU (contador removido) -->
         <div class="header-right">
-          <!-- MENU SANDUÍCHE -->
-          <div class="menu-wrapper">
-            <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel" title="Menu">
-              <span class="menu-icon" aria-hidden="true"></span>
-              <span class="sr-only">Abrir menu</span>
-            </button>
-
-            <nav id="menuPanel" class="menu-panel" aria-label="Menu principal">
-              <ul class="menu-list">
-                <li><a href="#" data-section="ae">Sobre o ae!</a></li>
-                <li><a href="#" data-section="projeto">Sobre o projeto</a></li>
-                <li class="menu-divider" aria-hidden="true"></li>
-                <li class="menu-heading">Sobre os artistas</li>
-                <li><a href="#" data-section="artista-pipilu">Atelie Pipilu</a></li>
-                <li><a href="#" data-section="artista-milla">Milla Orlandi</a></li>
-                <li><a href="#" data-section="artista-paula">Paula Iwata</a></li>
-                <li><a href="#" data-section="artista-silvia">Silvia Gerson</a></li>
-              </ul>
-            </nav>
+          <div class="search-box">
+             <input id="q" class="input-search" type="search" placeholder="Buscar artista..." aria-label="Buscar" />
           </div>
-          <!-- /MENU SANDUÍCHE -->
+          <button class="menu-btn" id="openMenu" aria-label="Abrir menu">
+            <span class="menu-icon"></span>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ====== CONTENT ====== -->
-  <main class="section">
-    <div class="wrap">
-      <!-- Grade de obras -->
-      <div class="grid" id="gallery" aria-live="polite"></div>
+  <nav class="menu-panel">
+    <button id="closeMenu" class="close-btn">&times;</button>
+    <ul class="menu-list">
+      <li><a href="#" data-section="sobre-projeto">O Projeto Parede Viva</a></li>
+      <li><a href="#" data-section="sobre-ae">O ae! Cozinha</a></li>
+      <li class="menu-divider">Nossos Artistas</li>
+      <li><a href="#" data-section="artista-pipilu">Atelier Pipilu</a></li>
+      <li><a href="#" data-section="artista-silvia">Silvia Gerson</a></li>
+      <li><a href="#" data-section="artista-milla">Milla Orlandi</a></li>
+      <li><a href="#" data-section="artista-paula">Paula Iwata</a></li>
+    </ul>
+  </nav>
+  <div class="menu-overlay"></div>
 
-      <!-- Seção de texto (aparece ao clicar no menu) -->
-      <section id="info" class="info hidden" aria-live="polite">
-        <h2 id="infoTitle"></h2>
-        <p id="infoBody"></p>
-        <button id="backToGallery" class="back-btn" type="button" aria-label="Voltar ao catálogo">← Voltar ao catálogo</button>
+  <main class="main-content">
+    <div class="wrap">
+      <div class="grid" id="gallery" aria-live="polite"></div>
+      <section id="info" class="info-section hidden" aria-live="polite">
+        <div class="info-container">
+          <div id="infoBody" class="section-content"></div>
+          <button id="backToGallery" class="back-btn">← Voltar para a Galeria</button>
+        </div>
       </section>
     </div>
   </main>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <img id="lightboxImg" alt="">
-    <button id="lightboxClose" class="sr-only" aria-label="Fechar imagem">Fechar</button>
-  </div>
-
-  <!-- ====== FOOTER FIXO ====== -->
   <footer class="site-footer">
     <div class="wrap">
-      <p class="footer-note">Para adquirir uma obra, entre em contato com a organização pelo telefone +55 (11) 3476-8521. Valores sujeitos a atualização.</p>
+      <p>© 2025 ae! Cozinha — Arte, Técnica e Afeto.</p>
     </div>
   </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <img id="lightboxImg" alt="" />
+  </div>
 
   <script src="assets/js/app.js"></script>
 </body>
