@@ -1,5 +1,5 @@
 const $gallery = document.getElementById('gallery');
-const $q = document.getElementById('q');
+// const $q = document.getElementById('q');
 const $openMenu = document.getElementById('openMenu');
 const $closeMenu = document.getElementById('closeMenu');
 const $menuPanel = document.querySelector('.menu-panel');
@@ -9,6 +9,27 @@ const $infoBody = document.getElementById('infoBody');
 const $backToGallery = document.getElementById('backToGallery');
 const $lightbox = document.getElementById('lightbox');
 const $lightboxImg = document.getElementById('lightboxImg');
+
+// --- Sincronização de Largura Cabeçalho/Grid ---
+function syncHeaderWidth() {
+  const headerContent = document.querySelector('.header-content');
+  if (headerContent && $gallery && $gallery.offsetWidth > 0) {
+    // Força o contêiner do cabeçalho a ter a mesma largura da galeria
+    headerContent.style.width = `${$gallery.offsetWidth}px`;
+    // Centraliza o header-content que agora tem largura fixa
+    headerContent.style.margin = '0 auto';
+  }
+}
+
+// Observa a galeria e sincroniza a largura quando ela muda
+if (window.ResizeObserver) {
+  const galleryObserver = new ResizeObserver(syncHeaderWidth);
+  galleryObserver.observe($gallery);
+} else {
+  // Fallback para navegadores antigos
+  window.addEventListener('resize', syncHeaderWidth);
+}
+// --- Fim da Sincronização ---
 
 const ARTWORKS = [
   { id: 101, artist: "Atelie Pipilu", title: "Pastel Levemente Cremoso", price: 580 },
@@ -52,6 +73,10 @@ function renderGallery(items) {
       </div>
     </article>
   `).join('');
+
+  // Força a sincronização da largura após a renderização da galeria
+  // Usa um pequeno timeout para garantir que o browser calculou o layout do grid
+  setTimeout(syncHeaderWidth, 50);
 }
 
 async function loadSection(file) {
@@ -95,9 +120,9 @@ $lightbox.onclick = () => {
   document.body.style.overflow = 'auto';
 };
 
-$q.oninput = (e) => {
-  const term = e.target.value.toLowerCase();
-  renderGallery(ARTWORKS.filter(i => i.artist.toLowerCase().includes(term) || i.title.toLowerCase().includes(term)));
-};
+// $q.oninput = (e) => {
+//   const term = e.target.value.toLowerCase();
+//   renderGallery(ARTWORKS.filter(i => i.artist.toLowerCase().includes(term) || i.title.toLowerCase().includes(term)));
+// };
 
 window.onload = () => renderGallery(ARTWORKS);
