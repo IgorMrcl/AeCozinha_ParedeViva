@@ -149,15 +149,18 @@ $gallery.onclick = (e) => {
       $lightboxTitle.textContent = artwork.title;
       $lightboxPrice.textContent = artwork.sold ? 'Vendido' : 'R$ ' + artwork.price.toLocaleString('pt-BR');
       
-      $lightbox.style.display = 'flex';
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
+      $lightbox.classList.add('open');
     }
   }
 };
 
 $lightbox.onclick = (e) => {
-  $lightbox.style.display = 'none';
+  $lightbox.classList.remove('open');
   document.body.style.overflow = 'auto';
+  document.body.style.paddingRight = '';
 };
 
 // $q.oninput = (e) => {
