@@ -17,7 +17,8 @@ const ARTIST_MAP = {
   'artista-pipilu': 'Atelie Pipilu',
   'artista-silvia': 'Silvia Gerson',
   'artista-milla': 'Milla Orlandi',
-  'artista-paula': 'Paula Iwata'
+  'artista-paula': 'Paula Iwata',
+  'artista-magadelha': 'Mariana Gadelha',
 };
 let currentArtist = null;
 
@@ -33,30 +34,11 @@ function syncHeaderWidth() {
 }
 
 const ARTWORKS = [
-  { id: 101, artist: "Atelie Pipilu", title: "Pastel Levemente Cremoso", price: 580},
-  { id: 102, artist: "Atelie Pipilu", title: "3 Unidade sem Glúten", price: 470 },
-  { id: 201, artist: "Silvia Gerson", title: "Canoa na Patagônia Chilena", price: 2734 },
-  { id: 202, artist: "Silvia Gerson", title: "Cartagena Será", price: 2995 },
-  { id: 203, artist: "Silvia Gerson", title: "Chuva na Primavera", price: 3250 },
-  { id: 204, artist: "Silvia Gerson", title: "O Tucano", price: 2813 },
-  { id: 205, artist: "Silvia Gerson", title: "Passeio de Trem", price: 2864 },
-  { id: 206, artist: "Silvia Gerson", title: "Pedra Vulcânica no Pacífico Latino Americano", price: 2473 },
-  { id: 207, artist: "Silvia Gerson", title: "Religiosidade", price: 3290 },
-  { id: 208, artist: "Silvia Gerson", title: "Um Chá Antes do Fim", price: 3560 },
-  { id: 301, artist: "Milla Orlandi", title: "Mulher Usando Luvas", price: 850 },
-  { id: 302, artist: "Milla Orlandi", title: "Martha", price: 850 },
-  { id: 303, artist: "Milla Orlandi", title: "Eva", price: 850 },
-  { id: 304, artist: "Milla Orlandi", title: "Julia", price: 850 },
-  { id: 305, artist: "Milla Orlandi", title: "Mulher com Colar", price: 850 },
-  { id: 306, artist: "Milla Orlandi", title: "Figura Sobre Fundo Azul", price: 850 },
-  { id: 307, artist: "Milla Orlandi", title: "Mulher Vista de Lado", price: 850 },
-  { id: 402, artist: "Paula Iwata", title: "Goiabeira", price: 400 },
-  { id: 403, artist: "Paula Iwata", title: "Hipnose", price: 5200 },
-  { id: 404, artist: "Paula Iwata", title: "Jaqueira", price: 5200 },
-  { id: 406, artist: "Paula Iwata", title: "O Banho do BemTeVi", price: 400 },
-  { id: 408, artist: "Paula Iwata", title: "Útero", price: 400, sold: true },
-  { id: 409, artist: "Paula Iwata", title: "Bananeira", price: 400 },
-  { id: 410, artist: "Paula Iwata", title: "Águas", price: 1000 }
+  { id: 101, artist: "Mariana Gadelha", title: "Deusa do Mar", price: 1200},
+  { id: 102, artist: "Mariana Gadelha", title: "Deusa da Ciência", price: 1200},
+    { id: 102, artist: "Mariana Gadelha", title: "Deusa da Luz", price: 1600},
+      { id: 102, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
+        { id: 102, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
 ];
 
 function renderGallery(items) {
@@ -166,7 +148,7 @@ window.onload = () => renderGallery(ARTWORKS);
 if (window.ResizeObserver) {
   const galleryObserver = new ResizeObserver(() => {
     syncHeaderWidth();      // Sua função de largura do header
-    fillBackgroundText();   // Nova função de preenchimento
+    // fillBackgroundText();   // Nova função de preenchimento
   });
   galleryObserver.observe($gallery);
 }
