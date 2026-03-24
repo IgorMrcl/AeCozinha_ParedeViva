@@ -3,7 +3,7 @@
 Este é o site da exposição **Parede Viva**, realizada no restaurante **ae! Cozinha**. O projeto serve como um catálogo digital para as obras expostas no ambiente físico.
 
 ## Sobre o Projeto
-A página permite que os visitantes consultem informações sobre as obras, como título e preço, além de conhecerem o perfil das artistas residentes.
+A página permite que os visitantes consultem informações sobre as obras, como título e preço, além de conhecerem o perfil dos artistas residentes.
 
 
 ## Funcionalidades Técnicas
