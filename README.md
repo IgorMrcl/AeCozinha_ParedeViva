@@ -9,7 +9,6 @@ A página permite que os visitantes consultem informações sobre as obras, como
 ## Funcionalidades Técnicas
 * **Galeria Dinâmica**: Gerenciamento e filtragem de obras por artista via JavaScript.
 * **Interface Reativa**: Cabeçalho fixo com controle de transparência baseado no scroll.
-* **Fundo Tipográfico**: Textura visual composta pelos nomes das artistas, gerada automaticamente.
 * **Visualização de Obras**: Sistema de Lightbox para detalhes das imagens.
 
 ## Tecnologias Utilizadas
