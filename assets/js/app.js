@@ -33,14 +33,14 @@ function syncHeaderWidth() {
   }
 }
 
-// Observa a galeria e sincroniza a largura quando ela muda
-if (window.ResizeObserver) {
-  const galleryObserver = new ResizeObserver(syncHeaderWidth);
-  galleryObserver.observe($gallery);
-} else {
-  // Fallback para navegadores antigos
-  window.addEventListener('resize', syncHeaderWidth);
-}
+// // Observa a galeria e sincroniza a largura quando ela muda
+// if (window.ResizeObserver) {
+//   const galleryObserver = new ResizeObserver(syncHeaderWidth);
+//   galleryObserver.observe($gallery);
+// } else {
+//   // Fallback para navegadores antigos
+//   window.addEventListener('resize', syncHeaderWidth);
+// }
 // --- Fim da Sincronização ---
 
 const ARTWORKS = [
@@ -169,3 +169,35 @@ $lightbox.onclick = (e) => {
 // };
 
 window.onload = () => renderGallery(ARTWORKS);
+
+
+
+// ====== ATUALIZAÇÃO DO OBSERVADOR ======
+// Atualize seu ResizeObserver existente para incluir o preenchimento do fundo
+if (window.ResizeObserver) {
+  const galleryObserver = new ResizeObserver(() => {
+    syncHeaderWidth();      // Sua função de largura do header
+    fillBackgroundText();   // Nova função de preenchimento
+  });
+  galleryObserver.observe($gallery);
+}
+
+
+// ====== CONTROLE DE TRANSPARÊNCIA DO HEADER ======
+let lastScroll = 0;
+const $header = document.querySelector('.site-header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Se o usuário está rolando para BAIXO e não está no topo extremo
+  if (currentScroll > lastScroll && currentScroll > 10) {
+    $header.classList.add('scrolled-down');
+  } 
+  // Se o usuário está rolando para CIMA (em qualquer ponto da página)
+  else {
+    $header.classList.remove('scrolled-down');
+  }
+
+  lastScroll = currentScroll;
+});
