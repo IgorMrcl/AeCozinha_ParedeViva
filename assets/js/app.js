@@ -1,5 +1,4 @@
 const $gallery = document.getElementById('gallery');
-// const $q = document.getElementById('q');
 const $openMenu = document.getElementById('openMenu');
 const $closeMenu = document.getElementById('closeMenu');
 const $menuPanel = document.querySelector('.menu-panel');
@@ -32,16 +31,6 @@ function syncHeaderWidth() {
     headerContent.style.margin = '0 auto';
   }
 }
-
-// // Observa a galeria e sincroniza a largura quando ela muda
-// if (window.ResizeObserver) {
-//   const galleryObserver = new ResizeObserver(syncHeaderWidth);
-//   galleryObserver.observe($gallery);
-// } else {
-//   // Fallback para navegadores antigos
-//   window.addEventListener('resize', syncHeaderWidth);
-// }
-// --- Fim da Sincronização ---
 
 const ARTWORKS = [
   { id: 101, artist: "Atelie Pipilu", title: "Pastel Levemente Cremoso", price: 580},
@@ -127,13 +116,17 @@ $menuPanel.onclick = (e) => {
   }
 };
 
-$backToGallery.onclick = () => renderGallery(ARTWORKS);
+$backToGallery.onclick = () => {
+  renderGallery(ARTWORKS);
+  window.scrollTo(0, 0);
+}
 
 $backToArtistGallery.onclick = () => {
   if (currentArtist) {
     const artistWorks = ARTWORKS.filter(item => item.artist === currentArtist);
     renderGallery(artistWorks);
   }
+  window.scrollTo(0, 0);
 };
 
 $gallery.onclick = (e) => {
@@ -163,10 +156,6 @@ $lightbox.onclick = (e) => {
   document.body.style.paddingRight = '';
 };
 
-// $q.oninput = (e) => {
-//   const term = e.target.value.toLowerCase();
-//   renderGallery(ARTWORKS.filter(i => i.artist.toLowerCase().includes(term) || i.title.toLowerCase().includes(term)));
-// };
 
 window.onload = () => renderGallery(ARTWORKS);
 
