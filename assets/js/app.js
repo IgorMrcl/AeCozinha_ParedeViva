@@ -14,10 +14,7 @@ const $lightboxPrice = document.getElementById('lightboxPrice');
 const $backToArtistGallery = document.getElementById('backToArtistGallery');
 
 const ARTIST_MAP = {
-  'artista-pipilu': 'Atelie Pipilu',
-  'artista-silvia': 'Silvia Gerson',
-  'artista-milla': 'Milla Orlandi',
-  'artista-paula': 'Paula Iwata',
+  'artista-jufernandez': 'Juliana Fernandez',
   'artista-magadelha': 'Mariana Gadelha',
 };
 let currentArtist = null;
@@ -34,11 +31,17 @@ function syncHeaderWidth() {
 }
 
 const ARTWORKS = [
-  { id: 101, artist: "Mariana Gadelha", title: "Deusa do Mar", price: 1200},
-  { id: 102, artist: "Mariana Gadelha", title: "Deusa da Ciência", price: 1200},
-    { id: 102, artist: "Mariana Gadelha", title: "Deusa da Luz", price: 1600},
-      { id: 102, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
-        { id: 102, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
+  { id: 201, artist: "Juliana Fernandez", title: "A Vida Inteira", price: 1800},
+  { id: 201, artist: "Juliana Fernandez", title: "De Uma Hora pra Outra", price: 1620},
+  { id: 201, artist: "Juliana Fernandez", title: "Para Acontecer", price: 1590},
+
+  { id: 301, artist: "Mariana Gadelha", title: "Deusa do Mar", price: 1200},
+  { id: 302, artist: "Mariana Gadelha", title: "Deusa da Ciência", price: 1200},
+  { id: 303, artist: "Mariana Gadelha", title: "Deusa da Luz", price: 1600},
+  { id: 304, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
+  { id: 305, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
+
+  
 ];
 
 function renderGallery(items) {
