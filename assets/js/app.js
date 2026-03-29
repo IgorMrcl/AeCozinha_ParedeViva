@@ -31,6 +31,14 @@ function syncHeaderWidth() {
 }
 
 const ARTWORKS = [
+
+  { id: 101, artist: "Camila Noris", title: "A Última Onda", price: 1900},
+  { id: 102, artist: "Camila Noris", title: "Blue Dream", price: 1050},
+  { id: 103, artist: "Camila Noris", title: "Jabuticabeira", price: 1150},
+  { id: 104, artist: "Camila Noris", title: "Manacá", price: 3600},
+  { id: 105, artist: "Camila Noris", title: "Pitangueira", price: 2300},
+  { id: 106, artist: "Camila Noris", title: "Summer Love", price: 2400},
+
   { id: 201, artist: "Juliana Fernandez", title: "A Vida Inteira", price: 1800},
   { id: 201, artist: "Juliana Fernandez", title: "De Uma Hora pra Outra", price: 1620},
   { id: 201, artist: "Juliana Fernandez", title: "Para Acontecer", price: 1590},
@@ -40,6 +48,8 @@ const ARTWORKS = [
   { id: 303, artist: "Mariana Gadelha", title: "Deusa da Luz", price: 1600},
   { id: 304, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
   { id: 305, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
+
+
 
   
 ];
