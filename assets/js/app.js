@@ -14,6 +14,7 @@ const $lightboxPrice = document.getElementById('lightboxPrice');
 const $backToArtistGallery = document.getElementById('backToArtistGallery');
 
 const ARTIST_MAP = {
+  'artista-camilanoris': 'Camila Noris',
   'artista-jufernandez': 'Juliana Fernandez',
   'artista-magadelha': 'Mariana Gadelha',
 };
