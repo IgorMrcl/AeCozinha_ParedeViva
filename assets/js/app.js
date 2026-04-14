@@ -17,6 +17,7 @@ const ARTIST_MAP = {
   'artista-camilanoris': 'Camila Noris',
   'artista-jufernandez': 'Juliana Fernandez',
   'artista-magadelha': 'Mariana Gadelha',
+  'artista-ronaldoinc': 'Ronaldo Inc'
 };
 let currentArtist = null;
 
@@ -50,9 +51,9 @@ const ARTWORKS = [
   { id: 304, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
   { id: 305, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
 
-
-
-  
+  { id: 401, artist: "Ronaldo Inc", title: "Amaterasu", price: 3000},
+  { id: 402, artist: "Ronaldo Inc", title: "Karusu", price: 3000},
+  { id: 403, artist: "Ronaldo Inc", title: "Tsuru", price: 3000}
 ];
 
 function renderGallery(items) {
