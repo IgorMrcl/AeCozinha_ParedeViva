@@ -50,6 +50,7 @@ const ARTWORKS = [
   { id: 303, artist: "Mariana Gadelha", title: "Deusa da Luz", price: 1600},
   { id: 304, artist: "Mariana Gadelha", title: "Polvo", price: 2400},
   { id: 305, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
+  { id: 306, artist: "Mariana Gadelha", title: "Pierrot e Colombina", price: 4800},
 
   { id: 401, artist: "Ronaldo Inc", title: "Amaterasu", price: 3000},
   { id: 402, artist: "Ronaldo Inc", title: "Karusu", price: 3000},
