@@ -17,7 +17,8 @@ const ARTIST_MAP = {
   'artista-camilanoris': 'Camila Noris',
   'artista-jufernandez': 'Juliana Fernandez',
   'artista-magadelha': 'Mariana Gadelha',
-  'artista-ronaldoinc': 'Ronaldo Inc'
+  'artista-ronaldoinc': 'Ronaldo Inc',
+  'artista-milla': 'Milla Orlandi'
 };
 let currentArtist = null;
 
@@ -52,9 +53,12 @@ const ARTWORKS = [
   { id: 305, artist: "Mariana Gadelha", title: "Homenagem a Deusa", price: 1800},
   { id: 306, artist: "Mariana Gadelha", title: "Pierrot e Colombina", price: 4800},
 
-  { id: 401, artist: "Ronaldo Inc", title: "Amaterasu", price: 3000},
-  { id: 402, artist: "Ronaldo Inc", title: "Karusu", price: 3000},
-  { id: 403, artist: "Ronaldo Inc", title: "Tsuru", price: 3000}
+  { id: 401, artist: "Milla Orlandi", title: "Mulher Usando Luvas", price: 850},
+  { id: 402, artist: "Milla Orlandi", title: "Mulher Vista de Lado", price: 850},
+
+  { id: 501, artist: "Ronaldo Inc", title: "Amaterasu", price: 3000},
+  { id: 502, artist: "Ronaldo Inc", title: "Karusu", price: 3000},
+  { id: 503, artist: "Ronaldo Inc", title: "Tsuru", price: 3000}
 ];
 
 function renderGallery(items) {
