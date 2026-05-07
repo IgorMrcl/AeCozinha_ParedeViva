@@ -18,7 +18,9 @@ const ARTIST_MAP = {
   'artista-jufernandez': 'Juliana Fernandez',
   'artista-magadelha': 'Mariana Gadelha',
   'artista-ronaldoinc': 'Ronaldo Inc',
-  'artista-milla': 'Milla Orlandi'
+  'artista-milla': 'Milla Orlandi',
+  'artista-silvia': 'Silvia Gerson',
+  'artista-paula': 'Paula Iwata'
 };
 let currentArtist = null;
 
@@ -58,7 +60,15 @@ const ARTWORKS = [
 
   { id: 501, artist: "Ronaldo Inc", title: "Amaterasu", price: 3000},
   { id: 502, artist: "Ronaldo Inc", title: "Karusu", price: 3000},
-  { id: 503, artist: "Ronaldo Inc", title: "Tsuru", price: 3000}
+  { id: 503, artist: "Ronaldo Inc", title: "Tsuru", price: 3000},
+
+  { id: 603, artist: "Paula Iwata", title: "Águas", price: 1000},
+  { id: 603, artist: "Paula Iwata", title: "O Banho do BemTeVi", price: 400},
+
+  { id: 703, artist: "Silvia Gerson", title: "O Tucano", price: 2813},
+  { id: 703, artist: "Silvia Gerson", title: "Pedra Vulcânica no Pacífico Latino Americano", price: 2473}
+
+  
 ];
 
 function renderGallery(items) {
