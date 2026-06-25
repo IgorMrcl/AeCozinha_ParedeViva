@@ -1,0 +1,17 @@
+# ---- Arquivos e pastas do Claude Code ----
+# Config local, plugins instalados e notas internas: não publicar no site.
+.claude/
+CLAUDE.md
+
+# ---- Dados internos / privados ----
+# A pasta "pdfs" contém dados pessoais dos artistas (CPF, RG, endereço, telefone).
+# Hoje ela fica FORA deste repositório (em ../pdfs), mas a entrada abaixo é
+# defensiva: caso algum dia seja movida para dentro de dist/, não vaza.
+pdfs/
+
+# ---- Sistema operacional / editores ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
