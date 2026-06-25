@@ -4,7 +4,7 @@
 
 /* ---- Configuração compartilhada ---- */
 // Substitua pelo número real da casa (formato internacional, só dígitos).
-const WHATSAPP = '55XXXXXXXXXXX';
+const WHATSAPP = '551134768521';
 
 const PAGAMENTO = [
   { nome: 'Pix',                 detalhe: 'à vista' },
