@@ -127,6 +127,7 @@ const $filterBar = $('#filterBar');
 const $info        = $('#info');
 const $infoBody    = $('#infoBody');
 const $gallerySec  = $('#galeria');
+const $sectionHead = $('.section-head');
 const $hero        = $('.hero');
 const $backToGallery       = $('#backToGallery');
 const $backToArtistGallery = $('#backToArtistGallery');
@@ -201,7 +202,11 @@ function showGallery() {
 
 $filterBar.addEventListener('click', (e) => {
   const b = e.target.closest('.filter');
-  if (b) applyFilter(b.dataset.filter);
+  if (b) {
+    applyFilter(b.dataset.filter);
+    // Sobe para o cabeçalho da galeria ("A parede, obra a obra") ficar no topo
+    $sectionHead.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
 });
 
 $gallery.addEventListener('click', (e) => {
