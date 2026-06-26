@@ -266,6 +266,10 @@ function openDetail(id, trigger) {
   lastFocused = trigger || document.activeElement;
 
   $panel.innerHTML = buildPanel(a);
+  // Sempre abre no topo, independente de onde a rolagem parou na obra anterior
+  $panel.scrollTop = 0;
+  const body = $panel.querySelector('.detail-body');
+  if (body) body.scrollTop = 0;
   $panel.setAttribute('aria-hidden', 'false');
   $panel.classList.add('open');
   $backdrop.classList.add('open');

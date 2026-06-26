@@ -175,20 +175,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   gap: 16px;
 }
 
-/* Nameplate textual "ae!" (o asset creme vive nas áreas escuras: menu/rodapé) */
+/* Logotipo oficial "ae!" (asset com os 'a' e 'e' em fontes distintas, recolorido em terracota para o header claro) */
 .brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.5em;
+  align-items: center;
+  gap: 0.6em;
   line-height: 1;
 }
 .brand-mark {
-  font-family: var(--display);
-  font-optical-sizing: auto;
-  font-variation-settings: "opsz" 96, "SOFT" 60, "wght" 600;
-  font-size: 1.85rem;
-  color: var(--terracota);
-  letter-spacing: -0.01em;
+  display: block;
+  height: 2rem;
+  width: auto;
 }
 .brand-sub {
   font-family: var(--body);
